@@ -1,0 +1,39 @@
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../config/mysqlDB");
+
+const User = sequelize.define("User", {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  role: {
+    type: DataTypes.ENUM("candidate", "company", "admin"),
+    defaultValue: "candidate",
+  },
+  profilePic: {
+    type: DataTypes.STRING,
+    defaultValue: "",
+  },
+  isVerified: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
+}, {
+  timestamps: true,
+});
+
+module.exports = User;
