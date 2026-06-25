@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API = "http://localhost:5000/api/jobs";
+const API = "https://smarthire-backend-chzw.onrender.com/api/jobs";
 const getToken = () => localStorage.getItem("token");
 
 export const fetchAllJobs = createAsyncThunk(
